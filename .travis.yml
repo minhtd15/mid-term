@@ -3,9 +3,12 @@ jdk:
   - openjdk17
 script:
   - ./mvnw clean install
+  - ./mvnw clean org.jacoco:jacoco-maven-plugin:prepare-agent install
   - ./mvnw deploy jib:build -P deploy-docker
-
 
 before_install:
   - echo "minhtom1510" | docker login -u "minhtd5" --password-stdin
   - docker pull mediasol/openjdk17-slim-jprofiler
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
