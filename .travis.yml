@@ -3,3 +3,9 @@ jdk:
   - openjdk17
 script:
   - ./mvnw clean install
+  - ./mvnw deploy jib:build -P deploy-docker
+
+
+before_install:
+  - echo "minhtom1510" | docker login -u "minhtd5" --password-stdin
+  - docker pull openjdk:17-jre-slim-sid
