@@ -8,4 +8,4 @@ script:
 
 before_install:
   - echo "minhtom1510" | docker login -u "minhtd5" --password-stdin
-  - docker pull openjdk:17-jre-slim-sid
+  - docker pull mediasol/openjdk17-slim-jprofiler
